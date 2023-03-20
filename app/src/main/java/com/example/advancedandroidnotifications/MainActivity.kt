@@ -55,32 +55,38 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendNotificationBasic() {
 
+        //Luodaan yksinkertainen ilmoitus
+
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Himoläski")
-            .setContentText("iha ok")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)    //ilmoituksen ikoni
+            .setContentTitle("Himoläski")                       //annetaan ilmoitukselle otsikko
+            .setContentText("iha ok")                           //ilmoituksen teksti
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)   //annetaan ilmoitukselle priority
 
         with(NotificationManagerCompat.from(this)) {
-            notify(notificationId, builder.build())
+            notify(notificationId, builder.build())             //rekisteröidään ilmoitus
         }
     }
 
     private fun sendNotificationWDesc() {
+
+        //Luodaan ilmoitus, johon mahtuu enemmän tekstiä eli kuvaus, pikku kuva ja napautustoiminto
+
         val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK            //luodaan napautus ominaisuus ilmoitukseen
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
-        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.himolaski)
+        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.himolaski) //luodaan bitmap ilmoutksen pikkukuvalle
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Himoläski")
-            .setLargeIcon(bitmap)
+            .setSmallIcon(R.drawable.ic_launcher_foreground) //ikoni
+            .setContentTitle("Himoläski")                    //otsake
+            .setLargeIcon(bitmap)                            //pikkukuva
+                //laitetaan setStyle kohtaan iso tekstikenttä
             .setStyle(NotificationCompat.BigTextStyle().bigText("iha ok, mut ootteko kattonu simpsonit sarjasta jakson himo läski homer :D siinä esiintyy koko simpsonit perhe eli myös bart simpsons homer poika fanit saavat nauraa ja naurattaahan se tietty myös vaikka homerin läski kuteet ja muut :D kannattaa kattoo nopee"))
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)                 //clicki toiminto
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)//priority
 
         with(NotificationManagerCompat.from(this)) {
             notify(notificationId, builder.build())
@@ -88,6 +94,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendNotificationWImage() {
+
+        //tehdään ilmoitus isolla kuvalla ja napautus toiminnolla
+
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
@@ -99,6 +108,7 @@ class MainActivity : AppCompatActivity() {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle("Himoläski")
             .setLargeIcon(bitmap)
+                //setStylessä määritellään tyyliksi iso kuva ja sijoitetaan yllä luotu bitmap kuvasta siihen
             .setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
