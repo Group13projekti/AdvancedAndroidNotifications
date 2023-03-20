@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:text="Notification app"
+        android:layout_margin="30dp"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:gravity="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_one"
+        android:layout_below="@id/title"
+        android:hint="Basic notification"
+        android:textColorHint="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="150dp"
+        android:layout_marginHorizontal="60dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_two"
+        android:layout_below="@id/btn_one"
+        android:hint="Notification with description"
+        android:textColorHint="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="60dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_three"
+        android:layout_below="@id/btn_two"
+        android:hint="Notification with picture"
+        android:textColorHint="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="60dp" />
+
+
+</RelativeLayout>
